@@ -10,7 +10,7 @@ public class Dao {
 	
 	public Connection getConnection(){
 		try{
-			Class.forName("");
+			Class.forName("หนตูทาหนตูทา");
 		}catch(Exception e){
 			
 		}
