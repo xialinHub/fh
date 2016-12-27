@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>简单柱状图</title>
+    <script type="text/javascript" src="js/echarts.js"></script>
+  </head>
+  
+  <body>
+  	<!-- 柱状图 -->
+    <div id="columnCharts" style="width:600px;height:400px;"></div>
+    <script type="text/javascript">
+    	//图表容器
+    	var columnCharts = echarts.init(document.getElementById('columnCharts'));
+    	//配置参数
+    	var option = {
+   			//图表的标题（3.0以后可以有多个）
+   			title : {
+   				show : true, //是否展示
+   				text : '我是主标题', //标题文本
+   				link : 'www.baidu.com',//标题文本链接
+   				target : 'blank',//指定窗口打开标题文本链接 （ 'self' 当前窗口  'blank' 新窗口）
+   				textStyle : { 
+   					color : 'red',//标题文本颜色 default: '#333'
+   					fontStyle : 'normal',//标题文本字体风格  可选 'normal' 'italic' 'oblique'
+   					fontWeight : 'border'//主标题文字字体的粗细 可选： 'normal' 'bold' 'border' 'lighter' (default: 'border')    					
+   				}, //标题文本样式
+   				subtext : '我是副标题'//副标题文本 支持使用 ‘\n’ 换行
+   				//还有很多参数不一一列举 请参考官方文档  http://echarts.baidu.com/option.html
+   			},
+   			legend : {
+   				data : ['市场占有率']
+   			},
+    		xAxis : {
+    			data : ['java','c','c++','c#','其他'] 
+    		},
+    		yAxis : {
+    			type : 'value',
+    			axisLabel : {
+    				formatter : '{value}%'
+    			}
+    		},
+    		series : [{
+    			name : '市场占有率',
+    			type : 'bar',
+    			data : [35,30,15,15,5]
+    		}]
+    	}
+    	columnCharts.setOption(option);
+    </script>
+  </body>
+</html>
