@@ -109,7 +109,7 @@ public class RoleController extends BaseController {
 	/**
 	 * 列表
 	 */
-	@RequestMapping
+	@RequestMapping("role_list")
 	public ModelAndView list(Page page)throws Exception{
 			ModelAndView mv = this.getModelAndView();
 			PageData pd = new PageData();
