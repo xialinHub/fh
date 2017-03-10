@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fh.controller.base.BaseController;
+import com.fh.entity.Page;
 import com.fh.service.system.BuildingProjectService;
 
 @Controller
@@ -28,7 +29,10 @@ public class BuildingProjectController extends BaseController{
 		List<Map<String, Object>> list = 
 				buildingProjectService.buildingProjectList(buildingProjectName);
 		ModelAndView mv = this.getModelAndView();
+		Page page = new Page();
+		page.setTotalResult(212);
 		mv.addObject("list", list);
+		mv.addObject("page", page);
 		mv.setViewName("system/buildingproject/buildingproject_list");
 		return mv;
 	}

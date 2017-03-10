@@ -535,7 +535,7 @@
 		province_name proviceName,
 		city_name cityName,
 		address address,
-		DATE_FORMAT(create_time, '%Y-%M-%d') createTime
+		DATE_FORMAT(create_time, '%Y-%m-%d') createTime
 	FROM
 		building_project
 	WHERE
