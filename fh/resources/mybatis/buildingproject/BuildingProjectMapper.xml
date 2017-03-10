@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fh.dao.buildingproject.BuildingProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.fh.entity.buildingproject.BuildingProject" >
+    <id column="building_project_id" property="buildingProjectId" jdbcType="INTEGER" />
+    <result column="building_project_name" property="buildingProjectName" jdbcType="VARCHAR" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="district_id" property="districtId" jdbcType="INTEGER" />
+    <result column="plate_id" property="plateId" jdbcType="INTEGER" />
+    <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="district_name" property="districtName" jdbcType="VARCHAR" />
+    <result column="plate_name" property="plateName" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="tags" property="tags" jdbcType="VARCHAR" />
+    <result column="footprint" property="footprint" jdbcType="DECIMAL" />
+    <result column="floor_area" property="floorArea" jdbcType="DECIMAL" />
+    <result column="volume_ratio" property="volumeRatio" jdbcType="DECIMAL" />
+    <result column="greening_ratio" property="greeningRatio" jdbcType="DECIMAL" />
+    <result column="house_total" property="houseTotal" jdbcType="INTEGER" />
+    <result column="parking_total_ug" property="parkingTotalUg" jdbcType="INTEGER" />
+    <result column="parking_total_lg" property="parkingTotalLg" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator_id" property="operatorId" jdbcType="INTEGER" />
+    <result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+    <result column="merchant_id" property="merchantId" jdbcType="INTEGER" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="modify_operator_id" property="modifyOperatorId" jdbcType="INTEGER" />
+    <result column="modify_operator_name" property="modifyOperatorName" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="DECIMAL" />
+    <result column="del_flag" property="delFlag" jdbcType="DECIMAL" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="col4" property="col4" jdbcType="VARCHAR" />
+    <result column="col5" property="col5" jdbcType="VARCHAR" />
+    <result column="fingerprint" property="fingerprint" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fh.entity.buildingproject.BuildingProject" extends="BaseResultMap" >
+    <result column="biref" property="biref" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    building_project_id, building_project_name, province_id, city_id, district_id, plate_id, 
+    province_name, city_name, district_name, plate_name, address, tags, footprint, floor_area, 
+    volume_ratio, greening_ratio, house_total, parking_total_ug, parking_total_lg, price, 
+    create_time, operator_id, operator_name, merchant_id, merchant_name, dept_id, modify_operator_id, 
+    modify_operator_name, modify_time, status, del_flag, col1, col2, col3, col4, col5, 
+    fingerprint
+  </sql>
+  <sql id="Blob_Column_List" >
+    biref
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from building_project
+    where building_project_id = #{buildingProjectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from building_project
+    where building_project_id = #{buildingProjectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fh.entity.buildingproject.BuildingProject" >
+    insert into building_project (building_project_id, building_project_name, 
+      province_id, city_id, district_id, 
+      plate_id, province_name, city_name, 
+      district_name, plate_name, address, 
+      tags, footprint, floor_area, 
+      volume_ratio, greening_ratio, house_total, 
+      parking_total_ug, parking_total_lg, price, 
+      create_time, operator_id, operator_name, 
+      merchant_id, merchant_name, dept_id, 
+      modify_operator_id, modify_operator_name, modify_time, 
+      status, del_flag, col1, 
+      col2, col3, col4, col5, 
+      fingerprint, biref)
+    values (#{buildingProjectId,jdbcType=INTEGER}, #{buildingProjectName,jdbcType=VARCHAR}, 
+      #{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, #{districtId,jdbcType=INTEGER}, 
+      #{plateId,jdbcType=INTEGER}, #{provinceName,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, 
+      #{districtName,jdbcType=VARCHAR}, #{plateName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{tags,jdbcType=VARCHAR}, #{footprint,jdbcType=DECIMAL}, #{floorArea,jdbcType=DECIMAL}, 
+      #{volumeRatio,jdbcType=DECIMAL}, #{greeningRatio,jdbcType=DECIMAL}, #{houseTotal,jdbcType=INTEGER}, 
+      #{parkingTotalUg,jdbcType=INTEGER}, #{parkingTotalLg,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, 
+      #{merchantId,jdbcType=INTEGER}, #{merchantName,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, 
+      #{modifyOperatorId,jdbcType=INTEGER}, #{modifyOperatorName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=DECIMAL}, #{delFlag,jdbcType=DECIMAL}, #{col1,jdbcType=VARCHAR}, 
+      #{col2,jdbcType=VARCHAR}, #{col3,jdbcType=VARCHAR}, #{col4,jdbcType=VARCHAR}, #{col5,jdbcType=VARCHAR}, 
+      #{fingerprint,jdbcType=VARCHAR}, #{biref,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fh.entity.buildingproject.BuildingProject" >
+    insert into building_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buildingProjectId != null" >
+        building_project_id,
+      </if>
+      <if test="buildingProjectName != null" >
+        building_project_name,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="districtId != null" >
+        district_id,
+      </if>
+      <if test="plateId != null" >
+        plate_id,
+      </if>
+      <if test="provinceName != null" >
+        province_name,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+      <if test="districtName != null" >
+        district_name,
+      </if>
+      <if test="plateName != null" >
+        plate_name,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="tags != null" >
+        tags,
+      </if>
+      <if test="footprint != null" >
+        footprint,
+      </if>
+      <if test="floorArea != null" >
+        floor_area,
+      </if>
+      <if test="volumeRatio != null" >
+        volume_ratio,
+      </if>
+      <if test="greeningRatio != null" >
+        greening_ratio,
+      </if>
+      <if test="houseTotal != null" >
+        house_total,
+      </if>
+      <if test="parkingTotalUg != null" >
+        parking_total_ug,
+      </if>
+      <if test="parkingTotalLg != null" >
+        parking_total_lg,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="operatorName != null" >
+        operator_name,
+      </if>
+      <if test="merchantId != null" >
+        merchant_id,
+      </if>
+      <if test="merchantName != null" >
+        merchant_name,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="modifyOperatorId != null" >
+        modify_operator_id,
+      </if>
+      <if test="modifyOperatorName != null" >
+        modify_operator_name,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+      <if test="col4 != null" >
+        col4,
+      </if>
+      <if test="col5 != null" >
+        col5,
+      </if>
+      <if test="fingerprint != null" >
+        fingerprint,
+      </if>
+      <if test="biref != null" >
+        biref,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buildingProjectId != null" >
+        #{buildingProjectId,jdbcType=INTEGER},
+      </if>
+      <if test="buildingProjectName != null" >
+        #{buildingProjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId != null" >
+        #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="plateId != null" >
+        #{plateId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="districtName != null" >
+        #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="plateName != null" >
+        #{plateName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null" >
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="footprint != null" >
+        #{footprint,jdbcType=DECIMAL},
+      </if>
+      <if test="floorArea != null" >
+        #{floorArea,jdbcType=DECIMAL},
+      </if>
+      <if test="volumeRatio != null" >
+        #{volumeRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="greeningRatio != null" >
+        #{greeningRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="houseTotal != null" >
+        #{houseTotal,jdbcType=INTEGER},
+      </if>
+      <if test="parkingTotalUg != null" >
+        #{parkingTotalUg,jdbcType=INTEGER},
+      </if>
+      <if test="parkingTotalLg != null" >
+        #{parkingTotalLg,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="merchantName != null" >
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyOperatorId != null" >
+        #{modifyOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyOperatorName != null" >
+        #{modifyOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="col4 != null" >
+        #{col4,jdbcType=VARCHAR},
+      </if>
+      <if test="col5 != null" >
+        #{col5,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerprint != null" >
+        #{fingerprint,jdbcType=VARCHAR},
+      </if>
+      <if test="biref != null" >
+        #{biref,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fh.entity.buildingproject.BuildingProject" >
+    update building_project
+    <set >
+      <if test="buildingProjectName != null" >
+        building_project_name = #{buildingProjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="plateId != null" >
+        plate_id = #{plateId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null" >
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="districtName != null" >
+        district_name = #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="plateName != null" >
+        plate_name = #{plateName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="footprint != null" >
+        footprint = #{footprint,jdbcType=DECIMAL},
+      </if>
+      <if test="floorArea != null" >
+        floor_area = #{floorArea,jdbcType=DECIMAL},
+      </if>
+      <if test="volumeRatio != null" >
+        volume_ratio = #{volumeRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="greeningRatio != null" >
+        greening_ratio = #{greeningRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="houseTotal != null" >
+        house_total = #{houseTotal,jdbcType=INTEGER},
+      </if>
+      <if test="parkingTotalUg != null" >
+        parking_total_ug = #{parkingTotalUg,jdbcType=INTEGER},
+      </if>
+      <if test="parkingTotalLg != null" >
+        parking_total_lg = #{parkingTotalLg,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantId != null" >
+        merchant_id = #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="merchantName != null" >
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyOperatorId != null" >
+        modify_operator_id = #{modifyOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyOperatorName != null" >
+        modify_operator_name = #{modifyOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="col4 != null" >
+        col4 = #{col4,jdbcType=VARCHAR},
+      </if>
+      <if test="col5 != null" >
+        col5 = #{col5,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerprint != null" >
+        fingerprint = #{fingerprint,jdbcType=VARCHAR},
+      </if>
+      <if test="biref != null" >
+        biref = #{biref,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where building_project_id = #{buildingProjectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fh.entity.buildingproject.BuildingProject" >
+    update building_project
+    set building_project_name = #{buildingProjectName,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      district_id = #{districtId,jdbcType=INTEGER},
+      plate_id = #{plateId,jdbcType=INTEGER},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      district_name = #{districtName,jdbcType=VARCHAR},
+      plate_name = #{plateName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tags = #{tags,jdbcType=VARCHAR},
+      footprint = #{footprint,jdbcType=DECIMAL},
+      floor_area = #{floorArea,jdbcType=DECIMAL},
+      volume_ratio = #{volumeRatio,jdbcType=DECIMAL},
+      greening_ratio = #{greeningRatio,jdbcType=DECIMAL},
+      house_total = #{houseTotal,jdbcType=INTEGER},
+      parking_total_ug = #{parkingTotalUg,jdbcType=INTEGER},
+      parking_total_lg = #{parkingTotalLg,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      merchant_id = #{merchantId,jdbcType=INTEGER},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      modify_operator_id = #{modifyOperatorId,jdbcType=INTEGER},
+      modify_operator_name = #{modifyOperatorName,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=DECIMAL},
+      del_flag = #{delFlag,jdbcType=DECIMAL},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      col4 = #{col4,jdbcType=VARCHAR},
+      col5 = #{col5,jdbcType=VARCHAR},
+      fingerprint = #{fingerprint,jdbcType=VARCHAR},
+      biref = #{biref,jdbcType=LONGVARCHAR}
+    where building_project_id = #{buildingProjectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fh.entity.buildingproject.BuildingProject" >
+    update building_project
+    set building_project_name = #{buildingProjectName,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      district_id = #{districtId,jdbcType=INTEGER},
+      plate_id = #{plateId,jdbcType=INTEGER},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      district_name = #{districtName,jdbcType=VARCHAR},
+      plate_name = #{plateName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tags = #{tags,jdbcType=VARCHAR},
+      footprint = #{footprint,jdbcType=DECIMAL},
+      floor_area = #{floorArea,jdbcType=DECIMAL},
+      volume_ratio = #{volumeRatio,jdbcType=DECIMAL},
+      greening_ratio = #{greeningRatio,jdbcType=DECIMAL},
+      house_total = #{houseTotal,jdbcType=INTEGER},
+      parking_total_ug = #{parkingTotalUg,jdbcType=INTEGER},
+      parking_total_lg = #{parkingTotalLg,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      merchant_id = #{merchantId,jdbcType=INTEGER},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      modify_operator_id = #{modifyOperatorId,jdbcType=INTEGER},
+      modify_operator_name = #{modifyOperatorName,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=DECIMAL},
+      del_flag = #{delFlag,jdbcType=DECIMAL},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      col4 = #{col4,jdbcType=VARCHAR},
+      col5 = #{col5,jdbcType=VARCHAR},
+      fingerprint = #{fingerprint,jdbcType=VARCHAR}
+    where building_project_id = #{buildingProjectId,jdbcType=INTEGER}
+  </update>
+  <!-- 查询楼盘列表 -->
+  <select id="buildingProjectList" parameterType="java.lang.String" resultType="map">
+  	SELECT
+		building_project_id buildingProjectId,
+		building_project_name buildingProjectName,
+		province_name proviceName,
+		city_name cityName,
+		address address,
+		DATE_FORMAT(create_time, '%Y-%M-%d') createTime
+	FROM
+		building_project
+	WHERE
+		1 = 1
+	AND STATUS = 1
+	AND del_flag = 1
+	ORDER BY
+		createTime DESC
+  </select>
+</mapper>

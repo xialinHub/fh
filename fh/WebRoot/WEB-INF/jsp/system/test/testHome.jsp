@@ -171,7 +171,6 @@
 		treeFrameT();
 	};
 	function addElement(){
-		alert(1);
 		top.hangge();
 	}
 	function editElement(){
