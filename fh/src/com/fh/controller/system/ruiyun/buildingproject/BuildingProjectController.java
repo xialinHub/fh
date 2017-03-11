@@ -18,7 +18,7 @@ public class BuildingProjectController extends BaseController{
 	@Autowired
 	private BuildingProjectService buildingProjectService;
 
-	/** servlet/jsp 页面访问 */
+	/** spring 控制视图匹配jsp 页面访问 */
 	@RequestMapping ( value = "buildingprojectlist" )
 	@ResponseBody
 	public ModelAndView buildingProjectList(String buildingProjectName) throws Exception{
@@ -31,15 +31,24 @@ public class BuildingProjectController extends BaseController{
 		return mv;
 	}
 	
-	/** 匹配freemaker模板 */
+	/** spring控制视图匹配freemaker模板（html页面）访问 */
 	@RequestMapping ( value = "buildingprojectlist2" )
 	@ResponseBody
 	public ModelAndView buildingProjectList2(String building_project_name) throws Exception{
-			ModelAndView mv = new ModelAndView("buildingProject");    
-	       List<Map<String, Object>> list = 
+		   ModelAndView mv = new ModelAndView("building_project");    
+		   List<Map<String, Object>> list = 
 					buildingProjectService.buildingProjectList(building_project_name);
-	       mv.addObject("buildingProjectName", building_project_name);
-	       mv.addObject("bpList", list);
-	       return mv;
+		   mv.addObject("buildingProjectName", building_project_name);
+		   mv.addObject("bpList", list);
+		   return mv;
 	}
+	
+	@RequestMapping( value = "buildingprojectinfo" )
+	@ResponseBody
+	public ModelAndView buildingProjectInfo(Integer buildingProjectId) throws Exception{
+			ModelAndView mv = new ModelAndView("bp_info");
+			mv.addObject("bpInfo", "123");
+			return mv;
+	}
+	
 }

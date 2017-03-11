@@ -26,4 +26,6 @@ public interface BuildingProjectMapper extends Serializable{
     int updateByPrimaryKey(BuildingProject record);
     
     List<Map<String, Object>> buildingProjectList(@Param("buildingProjectName")String buildingProjectName);
+    
+    Map<String, Object> buildingProjectInfo(@Param("buildingProjectId")Integer buildingProjectId);
 }

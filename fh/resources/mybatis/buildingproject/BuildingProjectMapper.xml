@@ -546,4 +546,9 @@
 	ORDER BY
 		createTime DESC
   </select>
+  <!-- 查找楼盘信息详情 -->
+  <select id="buildingProjectInfo" parameterType="java.lang.Integer" resultType="map">
+  	
+  </select>
+  
 </mapper>
