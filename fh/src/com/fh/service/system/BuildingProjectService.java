@@ -27,9 +27,9 @@ public class BuildingProjectService{
 	@Autowired
 	private DaoSupport dao;
 	
-	public List<Map<String, Object>> buildingProjectList(String buildingProjectName) throws Exception{
+	public List<Map<String, Object>> buildingProjectList(String building_project_name) throws Exception{
 		List<Map<String, Object>> list = 
-				buildingProjectMapper.buildingProjectList(buildingProjectName);
+				buildingProjectMapper.buildingProjectList(building_project_name);
 		return list;
 	}
 	

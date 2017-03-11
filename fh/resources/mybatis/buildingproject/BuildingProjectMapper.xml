@@ -528,7 +528,7 @@
     where building_project_id = #{buildingProjectId,jdbcType=INTEGER}
   </update>
   <!-- 查询楼盘列表 -->
-  <select id="buildingProjectList" parameterType="java.lang.String" resultType="map">
+  <select id="buildingProjectList" resultType="map" parameterType="java.lang.String">
   	SELECT
 		building_project_id buildingProjectId,
 		building_project_name buildingProjectName,

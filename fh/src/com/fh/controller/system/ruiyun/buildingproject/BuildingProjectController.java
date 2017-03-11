@@ -38,13 +38,12 @@ public class BuildingProjectController extends BaseController{
 	
 	@RequestMapping ( value = "buildingprojectlist2" )
 	@ResponseBody
-	public ModelAndView buildingProjectList2(String buildingProjectName) throws Exception{
+	public ModelAndView buildingProjectList2(String building_project_name) throws Exception{
 			ModelAndView mv = new ModelAndView("buildingProject");    
-	       mv.addObject("title", "Spring MVC And Freemarker");
 	       List<Map<String, Object>> list = 
-					buildingProjectService.buildingProjectList(buildingProjectName);
+					buildingProjectService.buildingProjectList(building_project_name);
+	       mv.addObject("buildingProjectName", building_project_name);
 	       mv.addObject("bpList", list);
-	       mv.addObject("content", " Hello world ， test my first spring mvc ! ");  
 	       return mv; 
 	}
 }
