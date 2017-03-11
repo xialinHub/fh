@@ -44,6 +44,6 @@ public class BuildingProjectController extends BaseController{
 					buildingProjectService.buildingProjectList(building_project_name);
 	       mv.addObject("buildingProjectName", building_project_name);
 	       mv.addObject("bpList", list);
-	       return mv; 
+	       return mv;
 	}
 }
