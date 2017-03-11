@@ -47,7 +47,7 @@ public class BuildingProjectController extends BaseController{
 	@ResponseBody
 	public ModelAndView buildingProjectInfo(Integer buildingProjectId) throws Exception{
 			ModelAndView mv = new ModelAndView("bp_info");
-			mv.addObject("bpInfo", "123");
+			mv.addObject("bpInfo", buildingProjectId);
 			return mv;
 	}
 	
