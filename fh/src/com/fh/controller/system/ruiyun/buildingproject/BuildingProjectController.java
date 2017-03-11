@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fh.controller.base.BaseController;
 import com.fh.entity.Page;
 import com.fh.service.system.BuildingProjectService;
+import com.fh.util.PageData;
+import com.fh.util.Tools;
 
 @Controller
 @RequestMapping( value = "buildingproject" )
@@ -24,17 +26,25 @@ public class BuildingProjectController extends BaseController{
 
 	@RequestMapping ( value = "buildingprojectlist" )
 	@ResponseBody
-	public ModelAndView buildingProjectList(String buildingProjectName){
+	public ModelAndView buildingProjectList(String buildingProjectName) throws Exception{
+		ModelAndView mv = this.getModelAndView();
 		//查询楼盘列表
 		List<Map<String, Object>> list = 
 				buildingProjectService.buildingProjectList(buildingProjectName);
-		ModelAndView mv = this.getModelAndView();
-		Page page = new Page();
-		page.setTotalResult(212);
 		mv.addObject("list", list);
-		mv.addObject("page", page);
 		mv.setViewName("system/buildingproject/buildingproject_list");
 		return mv;
 	}
 	
+	@RequestMapping ( value = "buildingprojectlist2" )
+	@ResponseBody
+	public ModelAndView buildingProjectList2(String buildingProjectName) throws Exception{
+			ModelAndView mv = new ModelAndView("buildingProject");    
+	       mv.addObject("title", "Spring MVC And Freemarker");
+	       List<Map<String, Object>> list = 
+					buildingProjectService.buildingProjectList(buildingProjectName);
+	       mv.addObject("bpList", list);
+	       mv.addObject("content", " Hello world ， test my first spring mvc ! ");  
+	       return mv; 
+	}
 }

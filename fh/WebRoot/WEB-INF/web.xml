@@ -76,7 +76,7 @@
       <param-name>targetFilterLifecycle</param-name>
       <param-value>true</param-value>
     </init-param>
-  </filter>
+  </filter>  
   <filter-mapping>
     <filter-name>shiroFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -88,4 +88,21 @@
   <session-config>
     <session-timeout>600</session-timeout>
   </session-config>
+  
+<servlet>  
+	<servlet-name>freemarker</servlet-name>  
+	<servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>  
+	<!-- 下面配置FreeMarker的ftl文件位置 -->  
+	<init-param>  
+	<param-name>TemplatePath</param-name>  
+	<param-value>/WEB-INF/html/</param-value>  
+	</init-param>  
+	<!-- 是否和服务器(tomcat)一起启动，0为不，1为是 -->  
+	<load-on-startup>1</load-on-startup>  
+</servlet>  
+<servlet-mapping>  
+	<servlet-name>freemarker</servlet-name>  
+	<url-pattern>*.html</url-pattern>  
+</servlet-mapping> 
+  
 </web-app>

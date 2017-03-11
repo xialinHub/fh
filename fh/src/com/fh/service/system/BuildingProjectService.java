@@ -4,10 +4,19 @@ import java.util.List;
 import java.util.Map;
 
 
+
+
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fh.dao.DaoSupport;
 import com.fh.dao.buildingproject.BuildingProjectMapper;
+import com.fh.entity.Page;
+import com.fh.util.PageData;
 
 @Service
 public class BuildingProjectService{
@@ -15,7 +24,10 @@ public class BuildingProjectService{
 	@Autowired
 	private BuildingProjectMapper buildingProjectMapper;
 	
-	public List<Map<String, Object>> buildingProjectList(String buildingProjectName){
+	@Autowired
+	private DaoSupport dao;
+	
+	public List<Map<String, Object>> buildingProjectList(String buildingProjectName) throws Exception{
 		List<Map<String, Object>> list = 
 				buildingProjectMapper.buildingProjectList(buildingProjectName);
 		return list;

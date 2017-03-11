@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>${title}</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    <table>
+    	<thead>
+	    	<tr>
+				<th></th>
+				<th>楼盘名称</th>
+				<th>所属省市</th>
+				<th>地址</th>
+				<th>创建时间</th>
+			</tr>
+    	</thead>
+    	<tbody>
+    		<#list bpList>
+				<#items as bp>
+				<tr id="${bp.buildingProjectId }">
+					<td>${bp.buildingProjectId }</td>
+					<td>${bp.buildingProjectName }</td>
+					<td>${bp.proviceName }${bp.cityName }</td>
+					<td>${bp.address }</td>
+					<td>${bp.createTime }</td>
+				</tr>
+				</#items>
+				<#else>
+				<tr>
+					<td>没有相关数据</td>
+				</tr>
+			</#list>
+    	</tbody>
+    </table>
+  </body>
+</html>

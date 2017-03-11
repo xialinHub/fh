@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.fh.entity.Page;
 import com.fh.entity.buildingproject.BuildingProject;
+import com.fh.util.PageData;
 
 public interface BuildingProjectMapper extends Serializable{
     int deleteByPrimaryKey(Integer buildingProjectId);
@@ -23,5 +25,5 @@ public interface BuildingProjectMapper extends Serializable{
 
     int updateByPrimaryKey(BuildingProject record);
     
-    List<Map<String, Object>> buildingProjectList(@Param("buildingProjectName")String buildingProjectName);
+    List<Map<String, Object>> buildingProjectList(String buildingProjectName);
 }
